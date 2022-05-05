@@ -1,0 +1,736 @@
+//Main Activity xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculation Screen"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/n1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="First Number"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/n2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Second Number"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:onClick="onClick"/>
+</LinearLayout>
+//Main Activity java
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    EditText number1,number2;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+        number2= findViewById(R.id.n2);
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int a, b,c;
+        a= Integer.parseInt(number1.getText().toString());
+        b=  Integer.parseInt(number2.getText().toString());
+        c= a+b;
+        String str = String.valueOf(c);
+
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+        obj.putExtra("result",str);
+        startActivity(obj);
+    }
+
+}
+intent xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result Screen"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:onClick="back"
+        android:layout_height="wrap_content"
+        android:text="BACK" />
+</LinearLayout>
+
+
+
+
+//intent java file
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class ResultActivity extends AppCompatActivity {
+    EditText r1;
+    Button back;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+        r1= findViewById(R.id.res);
+        back= findViewById(R.id.back);
+
+        Intent obj2= getIntent();
+        String str2 = obj2.getStringExtra("result");
+        r1.setText(str2);
+    }
+    public void back(View v)
+    {
+        Intent obj3 = new Intent(ResultActivity.this,MainActivity.class);
+        startActivity(obj3);
+    }
+
+
+}
+
+
+even odd
+main xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculation Screen"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/n1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Number"
+        android:inputType="textPersonName" />
+
+main java
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText number1;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int a;
+        a= Integer.parseInt(number1.getText().toString());
+        if(a%2==0)
+
+            Toast.makeText(MainActivity.this, a + " is even", Toast.LENGTH_LONG).show();
+else
+            Toast.makeText(MainActivity.this, a+ " is odd.", Toast.LENGTH_LONG).show();
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+
+        startActivity(obj);
+    }
+
+}
+
+intent xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result Screen"
+        android:textSize="30sp" />
+
+
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:onClick="back"
+        android:layout_height="wrap_content"
+        android:text="BACK" />
+</LinearLayout>
+
+intent java
+
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+
+public class ResultActivity extends AppCompatActivity {
+
+    Button back;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+        back= findViewById(R.id.back);
+    }
+    public void back(View v)
+    {
+        Intent obj3 = new Intent(ResultActivity.this,MainActivity.class);
+        startActivity(obj3);
+    }
+
+
+}
+
+find greater of two number
+main xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculation Screen"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/n1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Number"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/n2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Number"
+        android:inputType="textPersonName" />
+
+
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:onClick="onClick"/>
+</LinearLayout>
+
+main java
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText number1,number2;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+        number2= findViewById(R.id.n2);
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int a,b;
+        a= Integer.parseInt(number1.getText().toString());
+        b= Integer.parseInt(number2.getText().toString());
+        if(a>b)
+
+            Toast.makeText(MainActivity.this, a + " is greater", Toast.LENGTH_LONG).show();
+else
+            Toast.makeText(MainActivity.this, b + " is greater.", Toast.LENGTH_LONG).show();
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+
+        startActivity(obj);
+    }
+
+}
+
+intent xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result Screen"
+        android:textSize="30sp" />
+
+
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:onClick="back"
+        android:layout_height="wrap_content"
+        android:text="BACK" />
+</LinearLayout>
+
+intent java
+package com.example.even;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+
+public class ResultActivity extends AppCompatActivity {
+
+    Button back;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+        back= findViewById(R.id.back);
+    }
+    public void back(View v)
+    {
+        Intent obj3 = new Intent(ResultActivity.this,MainActivity.class);
+        startActivity(obj3);
+    }
+
+
+}
+
+greater from three
+public class MainActivity extends AppCompatActivity {
+    EditText number1,number2,number3;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+        number2= findViewById(R.id.n2);
+        number3= findViewById(R.id.n3);
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int a,b,c;
+        a= Integer.parseInt(number1.getText().toString());
+        b= Integer.parseInt(number2.getText().toString());
+        c= Integer.parseInt(number3.getText().toString());
+        if(a>b && a>c)
+
+            Toast.makeText(MainActivity.this, a + " is greater", Toast.LENGTH_LONG).show();
+else if(b>c)
+            Toast.makeText(MainActivity.this, b + " is greater.", Toast.LENGTH_LONG).show();
+else
+            Toast.makeText(MainActivity.this, c + " is greater.", Toast.LENGTH_LONG).show();
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+
+        startActivity(obj);
+    }
+
+armstrong number
+main java
+public class MainActivity extends AppCompatActivity {
+    EditText number1;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int b = 0,temp = 0,v;
+
+        v= Integer.parseInt(number1.getText().toString());
+        temp=v;
+
+        while (v > 0) {
+
+            int rem = v % 10;
+            b = (b) + (rem * rem * rem);
+            v = v / 10;
+        }
+        if (temp == b)
+
+            Toast.makeText(MainActivity.this,  b +" is Armstrong", Toast.LENGTH_LONG).show();
+
+else
+            Toast.makeText(MainActivity.this, temp + " is not Armstrong.", Toast.LENGTH_LONG).show();
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+
+        startActivity(obj);
+    }
+
+}
+
+fibonacci series
+main java
+public class MainActivity extends AppCompatActivity {
+    EditText number1,h;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        number1= findViewById(R.id.n1);
+
+        cal= findViewById(R.id.calculate);
+
+    }
+
+    public void onClick(View view) {
+
+        int a,first=0,second=1,next = 0,i;
+        a= Integer.parseInt(number1.getText().toString());
+
+
+
+        for(i=0;i<a;i++)
+        {
+            if(i<=1)
+                next=i;
+            else
+            {
+                next=first+second;
+                first=second;
+                second=next;
+            }
+            Toast.makeText(MainActivity.this, next + " ", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+
+        startActivity(obj);
+    }
+
+}
+
+Palindrome
+main java
+public class MainActivity extends AppCompatActivity {
+    EditText number1,h;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        number1= findViewById(R.id.n1);
+        cal= findViewById(R.id.calculate);
+
+    }
+    public void onClick(View view) {
+        int a,sum=0,temp;
+        a= Integer.parseInt(number1.getText().toString());
+        temp=a;
+        while (a > 0) {
+            int r = a % 10;
+            sum = (sum*10)+r;
+            a = a / 10;
+        }
+        if (temp == sum)
+            Toast.makeText(MainActivity.this,  temp +" is Palindrome", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(MainActivity.this, temp + " is not Palindrome.", Toast.LENGTH_LONG).show();
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+        startActivity(obj);
+    }
+
+}
+
+lcm
+main java
+public class MainActivity extends AppCompatActivity {
+    EditText number1,number2;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        number1= findViewById(R.id.n1);
+        number2= findViewById(R.id.n2);
+        cal= findViewById(R.id.calculate);
+
+    }
+    public void onClick(View view) {
+        int a,b,res;
+        a= Integer.parseInt(number1.getText().toString());
+        b= Integer.parseInt(number2.getText().toString());
+        res = (a>b)? a:b;
+
+        while(res>0){
+            if(res % a ==0 && res%b==0){
+                Toast.makeText(MainActivity.this,  res +" ", Toast.LENGTH_LONG).show();
+                break;
+            }
+            ++res;
+        }
+
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+        startActivity(obj);
+    }
+
+}
+
+factorial
+main java
+public class MainActivity extends AppCompatActivity {
+    EditText number1;
+    Button cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        number1= findViewById(R.id.n1);
+
+        cal= findViewById(R.id.calculate);
+
+    }
+    public void onClick(View view) {
+        int a,fac=1,i;
+        a= Integer.parseInt(number1.getText().toString());
+
+
+       for(i=1;i<=a;i++){
+           fac=fac*i;
+
+
+            }
+
+        Toast.makeText(MainActivity.this,  fac +" ", Toast.LENGTH_LONG).show();
+
+        Intent obj= new Intent(MainActivity.this,ResultActivity.class);
+        startActivity(obj);
+    }
+
+}
+
+
+
+reverse string
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.util.HashMap;
+public class MainActivity extends AppCompatActivity {
+   EditText name;
+   HashMap<Character, Integer> charCountMap;
+   TextView textview;
+   @Override
+   protected void onCreate(Bundle readdInstanceState) {
+      super.onCreate(readdInstanceState);
+      setContentView(R.layout.activity_main);
+      name = findViewById(R.id.name);
+      textview = findViewById(R.id.textview);
+      charCountMap = new HashMap<>();
+      findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            if (!name.getText().toString().isEmpty()) {
+               StringBuffer c = new StringBuffer(name.getText().toString());
+               textview.setText(c.reverse());
+               Toast.makeText(MainActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+            } else {
+               name.setError("Enter NAME");
+            }
+         }
+      });
+   }
+}
+
+toast with event interface
+Toast event interface
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Button b, b2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+           b = findViewById(R.id.button);
+            b2 = findViewById(R.id.button2);
+            b.setOnClickListener(this);
+            b2.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.button) {
+
+                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+            }
+            if (view.getId() == R.id.button2) {
+                Toast.makeText(this, "say Hi", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+
+

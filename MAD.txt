@@ -1,0 +1,969 @@
+//Login page
+xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/msg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="UserName"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="login"
+        android:text="LOGIN" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="result"
+        android:textSize="30sp" />
+</LinearLayout>
+
+java file
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+EditText u ;
+EditText p ;
+Button b ;
+TextView t;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        u = findViewById(R.id.username);
+        p= findViewById(R.id.password);
+        b = findViewById(R.id.button);
+        t= findViewById(R.id.textView3);
+    }
+public void login(View v)
+{
+    String uname = u.getText().toString();
+    String pass = p.getText().toString();
+    if (uname.equals("admin") && pass.equals("admin"))
+    {
+        t.setText("Login Sucessful");
+    }
+    else
+    {
+        t.setText("Login not Sucessful");
+    }
+
+}
+
+}
+
+
+//Create a simple application in android studio for arithmetic calculations
+
+//Xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+	
+	<EditText
+		android:id="@+id/no1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textPersonName" />
+	
+	<EditText
+		android:id="@+id/no2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textPersonName" />
+
+	<Button
+		android:id="@+id/add"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="addition"
+		android:text="ADD" />
+	<EditText
+		android:id="@+id/txt1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:inputType="textPersonName" />
+	<Button
+		android:id="@+id/sub"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="sustraction"
+		android:text="SUBSTRACT" />
+	<Button
+		android:id="@+id/div"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="multiplication"
+		android:text="MULTIPLY" />
+	<Button
+		android:id="@+id/button4"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="division"
+		android:text="DIVIDE" />
+</LinearLayout>
+
+//java file
+package com.example.simplecalculator;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+EditText n1 ;
+EditText n2;
+Button add1;
+EditText t;
+Button sub,mul,div;
+//TextView result1;
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		n1= findViewById(R.id.no1);
+		n2= findViewById(R.id.no2);
+		add1= findViewById(R.id.add);
+		t= findViewById(R.id.txt1);
+		sub= findViewById(R.id.sub);
+		mul= findViewById(R.id.button4);
+		sub= findViewById(R.id.div);
+		//result1= findViewById(R.id.result);
+	}
+	public void addition(View v)
+	{
+		String str1= n1.getText().toString();
+		String str2= n2.getText().toString();
+		int num1= Integer.parseInt(str1);
+		int num2= Integer.parseInt(str2);
+		int num3 = num1 + num2;
+		String st3= String.valueOf(num3);
+		t.setText(st3);
+		//result1.setText(num3);
+	}
+	public void multiplication(View v)
+	{
+		String str1= n1.getText().toString();
+		String str2= n2.getText().toString();
+		int num1= Integer.parseInt(str1);
+		int num2= Integer.parseInt(str2);
+		int num3 = num1 * num2;
+		String st3= String.valueOf(num3);
+		t.setText(st3);
+		//result1.setText(num3);
+	}
+	public void division(View v)
+	{
+		String str1= n1.getText().toString();
+		String str2= n2.getText().toString();
+		int num1= Integer.parseInt(str1);
+		int num2= Integer.parseInt(str2);
+		int num3 = num1 / num2;
+		String st3= String.valueOf(num3);
+		t.setText(st3);
+		//result1.setText(num3);
+	}
+	public void sustraction(View v)
+	{
+		String str1= n1.getText().toString();
+		String str2= n2.getText().toString();
+		int num1= Integer.parseInt(str1);
+		int num2= Integer.parseInt(str2);
+		int num3 = num1 - num2;
+		String st3= String.valueOf(num3);
+		t.setText(st3);
+		//result1.setText(num3);
+	}
+}
+
+
+Experiment 3 - Design simple GUI application with activity and intents e.g. calculator.
+
+//activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+	<RelativeLayout
+		android:layout_width="368dp"
+		android:layout_height="495dp"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		android:layout_marginRight="8dp">
+	<Button
+		android:id="@+id/btn_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:layout_below="@+id/edText1"
+		android:layout_marginTop="60dp"
+		android:onClick="PressOne"
+		android:text="1"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_0"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_8"
+		android:layout_toEndOf="@+id/btn_7"
+		android:layout_toRightOf="@+id/btn_7"
+		android:text="0"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_9"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_6"
+		android:layout_toEndOf="@+id/btn_5"
+		android:layout_toRightOf="@+id/btn_5"
+		android:text="9"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_8"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_5"
+		android:layout_toEndOf="@+id/btn_7"
+		android:layout_toRightOf="@+id/btn_7"
+		android:text="8"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_7"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/btn_4"
+		android:layout_alignStart="@+id/btn_4"
+		android:layout_below="@+id/btn_4"
+		android:text="7"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBaseline="@+id/btn_5"
+		android:layout_alignBottom="@+id/btn_5"
+		android:layout_toEndOf="@+id/btn_5"
+		android:layout_toRightOf="@+id/btn_5"
+		android:text="6"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_2"
+		android:layout_toEndOf="@+id/btn_4"
+		android:layout_toRightOf="@+id/btn_4"
+		android:text="5"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/btn_1"
+		android:layout_alignStart="@+id/btn_1"
+		android:layout_below="@+id/btn_1"
+		android:text="4"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBaseline="@+id/btn_2"
+		android:layout_alignBottom="@+id/btn_2"
+		android:layout_toEndOf="@+id/btn_2"
+		android:layout_toRightOf="@+id/btn_2"
+		android:text="3"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBaseline="@+id/btn_1"
+		android:layout_alignBottom="@+id/btn_1"
+		android:layout_toEndOf="@+id/btn_1"
+		android:layout_toRightOf="@+id/btn_1"
+		android:text="2"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_Add"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/btn_6"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:backgroundTint="@android:color/darker_gray"
+		android:text="+"
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_Sub"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/btn_Add"
+		android:layout_alignStart="@+id/btn_Add"
+		android:layout_below="@+id/btn_Add"
+		android:backgroundTint="@android:color/darker_gray"
+		android:text="-"
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_Mul"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/btn_Sub"
+		android:layout_alignStart="@+id/btn_Sub"
+		android:layout_below="@+id/btn_6"
+		android:backgroundTint="@android:color/darker_gray"
+		android:text="*"
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+
+	<Button
+		android:id="@+id/btn_Div"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/btn_Mul"
+		android:layout_alignStart="@+id/btn_Mul"
+		android:layout_below="@+id/btn_9"
+		android:backgroundTint="@android:color/darker_gray"
+		android:text="/"
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+	<EditText
+		android:id="@+id/edText1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentStart="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginTop="22dp"
+		android:ems="10"
+		android:inputType="textPersonName"
+		android:textAlignment="textEnd"
+		android:textSize="24sp"
+		android:gravity="end" />
+	<Button
+		android:id="@+id/btn_calc"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_0"
+		android:layout_toEndOf="@+id/btn_0"
+		android:layout_toRightOf="@+id/btn_0"
+		android:backgroundTint="@android:color/holo_green_light"
+		android:text="="
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_dec"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/btn_7"
+		android:layout_toLeftOf="@+id/btn_8"
+		android:layout_toStartOf="@+id/btn_8"
+		android:text="."
+		android:textSize="18sp" />
+	<Button
+		android:id="@+id/btn_clear"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_below="@+id/btn_Div"
+		android:backgroundTint="@android:color/holo_blue_dark"
+		android:text="clear"
+		android:textColor="@android:color/background_light"
+		android:textSize="18sp" />
+	</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+//MainActivity.java
+package com.example.guicalculator;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+	public class MainActivity extends AppCompatActivity {
+		Button
+		btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8,btn_9,btn_0,btn_Add,btn_Sub,btn_Mul,btn_Div,btn_calc,btn_dec,btn_clear;
+		EditText ed1;
+		float Value1, Value2;
+		boolean mAddition, mSubtract, mMultiplication, mDivision ;
+		@Override
+		protected void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		btn_0 = (Button) findViewById(R.id.btn_0);
+		btn_1 = (Button) findViewById(R.id.btn_1);
+		btn_2 = (Button) findViewById(R.id.btn_2);
+		btn_3 = (Button) findViewById(R.id.btn_3);
+		btn_4 = (Button) findViewById(R.id.btn_4);
+		btn_5 = (Button) findViewById(R.id.btn_5);
+		btn_6 = (Button) findViewById(R.id.btn_6);
+		btn_7 = (Button) findViewById(R.id.btn_7);
+		btn_8 = (Button) findViewById(R.id.btn_8);
+		btn_9 = (Button) findViewById(R.id.btn_9);
+		btn_Add = (Button) findViewById(R.id.btn_Add);
+		btn_Div = (Button) findViewById(R.id.btn_Div);
+		btn_Sub = (Button) findViewById(R.id.btn_Sub);
+		btn_Mul = (Button) findViewById(R.id.btn_Mul);
+		btn_calc = (Button) findViewById(R.id.btn_calc);
+		btn_dec = (Button) findViewById(R.id.btn_dec);
+		btn_clear = (Button) findViewById(R.id.btn_clear);
+		ed1 = (EditText) findViewById(R.id.edText1);
+		btn_0.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"0");
+			}
+		});
+		btn_1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"1");
+			}
+		});
+		btn_2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"2");
+				}
+		});
+		btn_3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"3");
+			}
+		});
+		btn_4.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"4");
+			}
+		});
+		btn_5.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"5");
+			}
+		});
+		btn_6.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"6");
+			}
+		});
+		btn_7.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"7");
+			}
+		});
+		btn_8.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"8");
+			}
+		});
+		btn_9.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+"9");
+			}
+		});
+		btn_dec.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText(ed1.getText()+".");
+			}
+		});
+		btn_Add.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (ed1 == null){
+					ed1.setText("");
+				}
+				else{
+					Value1 = Float.parseFloat(ed1.getText() + "");
+					mAddition = true;
+					ed1.setText(null);
+				}
+			}
+		});
+		btn_Sub.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Value1 = Float.parseFloat(ed1.getText() + "");
+				mSubtract = true ;
+				ed1.setText(null);
+				}
+		});
+		btn_Mul.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Value1 = Float.parseFloat(ed1.getText() + "");
+				mMultiplication = true;
+				ed1.setText(null);
+			}
+		});
+		btn_Div.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Value1 = Float.parseFloat(ed1.getText()+"");
+				mDivision = true ;
+				ed1.setText(null);
+			}
+		});
+		btn_calc.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Value2 = Float.parseFloat(ed1.getText() + "");
+				if (mAddition == true){
+					ed1.setText(Value1 + Value2 +"");
+					mAddition=false;
+				}
+				if (mSubtract == true){
+					ed1.setText(Value1 - Value2 +"");
+					mSubtract=false;
+				}
+				if (mMultiplication == true){
+					ed1.setText(Value1 * Value2 + "");
+					mMultiplication=false;
+				}
+				if (mDivision == true){
+					ed1.setText(Value1 / Value2+"");
+					mDivision=false;
+				}
+			}
+		});
+		btn_clear.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ed1.setText("");
+			}
+		});
+	}
+}
+
+
+
+
+
+//Radio and checkbox buttons
+//XML file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Subject and Collage Selection"
+		android:textSize="24sp" />
+	<CheckBox
+		android:id="@+id/dsa"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="DSA" />
+	<CheckBox
+		android:id="@+id/se"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="SE" />
+	<CheckBox
+		android:id="@+id/oops"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="OOPS" />
+	<RadioGroup
+		android:id="@+id/colgrp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" >
+		<RadioButton
+			android:id="@+id/piet"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="PIET" />
+		<RadioButton
+			android:id="@+id/pce"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="PCE" />
+		<RadioButton
+			android:id="@+id/pu"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="PU" />
+	</RadioGroup>
+	<Button
+		android:id="@+id/subject"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="funsubject"
+		android:text="SUBJECT" />
+	<Button
+		android:id="@+id/collage"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="funcollage"
+		android:text="COLLAGE" />
+	<TextView
+		android:id="@+id/sub"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="24sp" />
+	<TextView
+		android:id="@+id/col"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="24sp" />
+</LinearLayout>
+
+//Java file
+package com.example.chkboxandoptbutn;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+	TextView lable;
+	CheckBox s1,s2,s3;
+	RadioGroup collagenamegrp;
+	RadioButton colname;
+	Button b1,b2;
+	TextView sub,col;
+		@Override
+		protected void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.activity_main);
+			s1= findViewById(R.id.dsa);
+			s2= findViewById(R.id.se);
+			s3= findViewById(R.id.oops);
+			collagenamegrp = findViewById(R.id.colgrp);
+			b1 = findViewById(R.id.subject);
+			b2= findViewById(R.id.collage);
+			sub= findViewById(R.id.sub);
+			col=findViewById(R.id.col);
+		}
+		public void funsubject (View v)
+		{
+			String sub1 = "";
+			if (s1.isChecked()== true)
+			{
+				sub1 = sub1+ s1.getText().toString()+", ";
+			}
+			if (s2.isChecked()== true)
+			{
+				sub1 = sub1+ s2.getText().toString()+", ";
+			}
+			if (s3.isChecked()== true)
+			{
+				sub1 = sub1+ s3.getText().toString()+", ";
+			}
+			sub.setText(sub1);
+		}
+		public void funcollage (View v)
+		{
+			int abc = collagenamegrp.getCheckedRadioButtonId();
+			colname= findViewById(abc);
+			col.setText(colname.getText().toString());
+		}
+}
+
+
+
+//Experiment 5:Implementation of Toast and Event with Interface using Android Studio
+
+//Activity_Main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:orientation="vertical"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+
+
+   <Button
+       android:id="@+id/button"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Submit" />
+
+   <Button
+       android:id="@+id/button2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Button" />
+</LinearLayout>
+  
+//MainActivity.java
+
+package com.example.eventwithinterface;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+   Button b, b2;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       b = findViewById(R.id.button);
+       b2 = findViewById(R.id.button2);
+       b.setOnClickListener(this);
+       b2.setOnClickListener(this);
+   }
+
+   @Override
+   public void onClick(View view) {
+       if (view.getId() == R.id.button) {
+
+           Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+       }
+       if (view.getId() == R.id.button2) {
+           Toast.makeText(this, "say Hi", Toast.LENGTH_SHORT).show();
+       }
+
+   }
+}
+
+
+
+
+//Exp 6: List View
+
+//Activity_Main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+
+
+   <ListView
+       android:id="@+id/cities"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
+</LinearLayout>
+
+//MainActivity.java
+
+package com.example.listview;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+   ListView city;
+   String []citynames = {"Delhi","Kanpur","Goa","Shimla","Haridwar","Varansi"};
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       city= findViewById(R.id.cities);
+       ArrayAdapter<String> obj = new ArrayAdapter<String>(MainActivity.this,
+               androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , citynames);
+       city.setAdapter(obj);
+
+       city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               String str= (String) parent.getItemAtPosition(position);
+               Toast.makeText(MainActivity.this,str, Toast.LENGTH_SHORT).show();
+           }
+       });
+   }
+}
+
+
+
+
+//Spinner
+
+//Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:paddingTop="123dp"
+	android:paddingLeft="12dp"
+	android:paddingRight="12dp"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+	<Spinner
+		android:id="@+id/spinner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+	</LinearLayout>
+
+//MainActivity.java
+package com.poornima.spinner_example_16;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+	String
+	name[]={"Select_City","Alwar","Bhartpur","Kota","Ajmer","Jaipur","Sikar"};
+	Spinner sp;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		sp=findViewById(R.id.spinner);
+		ArrayAdapter<String> arr=newArrayAdapter<>(MainActivity.this,R.layout.support_simple_spinner_dropdown_item,name);
+
+		sp.setAdapter(arr);
+		sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				String s=(String) parent.getItemAtPosition(position);
+				// Toast.makeText(MainActivity.this, ""+s,
+				Toast.LENGTH_SHORT).show();
+				Intent obj=new Intent(MainActivity.this,Main2Activity.class);
+				obj.putExtra("k",s);
+				startActivity(obj);
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+	}
+}
+
+//Activity_main2.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:layout_height="match_parent"
+	tools:context=".Main2Activity">
+	<TextView
+		android:gravity="center"
+		android:textStyle="bold"
+		android:textSize="34dp"
+		android:id="@+id/textView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="TextView" />
+</LinearLayout>
+
+//Main2Activity.java
+package com.poornima.spinner_example_16;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+public class Main2Activity extends AppCompatActivity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main2);
+		TextView t=findViewById(R.id.textView);
+		t.setText(getIntent().getStringExtra("k"));
+	}
+}
