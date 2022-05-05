@@ -1,0 +1,13 @@
+def calculation(a, b):
+    # Your Code
+    return a+b
+
+res = calculation(40, 10)
+print(res)
+
+def cal(a, b):
+    # Your Code
+    return a+b+5
+
+res = cal(40, 10)
+print(res)
